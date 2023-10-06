@@ -32,6 +32,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head />
+        <title>মূল্যায়ন</title>
         <body>
           <Main />
           <NextScript />
