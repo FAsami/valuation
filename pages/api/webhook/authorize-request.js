@@ -10,11 +10,11 @@ const authorizeRequest = async (req, res) => {
         token: authToken,
         secret: process.env.NEXTAUTH_SECRET,
       })
-      console.log('USER ID: ', userId)
 
       if (userId) {
         return res.status(200).json({
           'X-Hasura-User-Id': `${userId}`,
+          'X-Hasura-Role': `STUDENT`,
         })
       }
       return res
