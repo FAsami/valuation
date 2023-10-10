@@ -14,7 +14,7 @@ const authorizeRequest = async (req, res) => {
 
       if (userId) {
         return res.status(200).json({
-          'X-Hasura-User-Id': userId,
+          'X-Hasura-User-Id': `${userId}`,
         })
       }
       return res
