@@ -1,13 +1,16 @@
 import { decode } from 'next-auth/jwt'
 
 const authorizeRequest = async (req, res) => {
+  console.log('REQ', req)
   const authToken = req.body.headers['mullayan-next-auth-token']
+
   if (authToken) {
     try {
       const { userId } = await decode({
         token: authToken,
         secret: process.env.NEXTAUTH_SECRET,
       })
+      console.log('USER ID: ', userId)
 
       if (userId) {
         return res.status(200).json({
