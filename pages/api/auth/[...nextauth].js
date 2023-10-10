@@ -1,5 +1,18 @@
 import NextAuth from 'next-auth'
 import Google from 'next-auth/providers/google'
+import { GraphQLClient } from 'graphql-request'
+
+const client = async () => {
+  try {
+    return new GraphQLClient(`${process.env.NEXT_PUBLIC_HASURA_GRAPHQL_API}`, {
+      headers: {
+        'x-hasura-admin-secret': `${process.env.HASURA_GRAPHQL_ADMIN_SECRET}`,
+      },
+    })
+  } catch (error) {
+    console.error('error', error)
+  }
+}
 
 export const authOptions = {
   providers: [
@@ -33,13 +46,38 @@ export const authOptions = {
   },
   pages: { signIn: '/login' },
   callbacks: {
+    async signIn({ profile }) {
+      try {
+        const _client = await client()
+        const { users } = await _client.request(GET_USERS, {
+          email: profile.email,
+        })
+        if (!users.length) {
+          await _client.request(INSERT_USER, {
+            object: {
+              email: profile.email,
+              name: profile.name,
+              avatar: profile.picture,
+            },
+          })
+        }
+      } catch (error) {
+        console.log('Error:', error)
+        return false
+      }
+      return true
+    },
     async session({ session, token }) {
-      session.user.role = token.role
+      session.user.userId = token.userId
       return session
     },
-    async jwt({ token, account }) {
-      if (account) {
-        token.role = 'student'
+    async jwt({ token, profile }) {
+      if (profile) {
+        const _client = await client()
+        const { users } = await _client.request(GET_USERS, {
+          email: profile.email,
+        })
+        token.userId = users[0].id
       }
       return token
     },
@@ -47,3 +85,21 @@ export const authOptions = {
 }
 
 export default NextAuth(authOptions)
+
+const GET_USERS = `
+  query users($email: String!) {
+    users(where: {email: {_eq: $email}}) {
+      email
+      id
+      phoneNo
+    }
+  }
+`
+
+const INSERT_USER = `
+  mutation users($object: users_insert_input!) {
+    insert_users_one(object: $object) {
+      id
+    }
+  }
+`
