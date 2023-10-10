@@ -8,8 +8,10 @@ const Home = () => {
   return (
     <div tw="h-screen w-screen flex items-center justify-center">
       <h1 tw="text-center">মূল্যায়ন</h1>
-      <Link href="/mock-test">Mock test</Link>
-      <Link href="/practice">Quick Practice</Link>
+      <div>
+        <Link href="/mock-test">Mock test</Link>
+        <Link href="/practice">Quick Practice</Link>
+      </div>
     </div>
   )
 }
