@@ -1,12 +1,6 @@
 import { decode } from 'next-auth/jwt'
 
 const authorizeRequest = async (req, res) => {
-  console.log('Authorize request ')
-
-  return res.status(200).json({
-    'X-Hasura-User-Id': 34,
-  })
-
   const authToken = req.body.headers['mullayan-next-auth-token']
   if (authToken) {
     try {
