@@ -1,6 +1,7 @@
 import { SessionProvider } from 'next-auth/react'
 import { ApolloProvider } from '@/providers'
 import 'antd/dist/reset.css'
+import Layout from '@/components/Layout'
 
 export default function App({
   Component,
@@ -9,7 +10,9 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <ApolloProvider>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ApolloProvider>
     </SessionProvider>
   )
