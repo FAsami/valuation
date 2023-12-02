@@ -1,0 +1,13 @@
+table:
+  name: topic
+  schema: public
+array_relationships:
+  - name: topic_question
+    using:
+      manual_configuration:
+        column_mapping:
+          id: topicId
+        insertion_order: null
+        remote_table:
+          name: question
+          schema: public

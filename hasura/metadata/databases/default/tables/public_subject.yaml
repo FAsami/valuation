@@ -1,0 +1,13 @@
+table:
+  name: subject
+  schema: public
+array_relationships:
+  - name: subject_chapters
+    using:
+      manual_configuration:
+        column_mapping:
+          id: subjectId
+        insertion_order: null
+        remote_table:
+          name: chapter
+          schema: public

@@ -1,0 +1,13 @@
+table:
+  name: classes
+  schema: public
+array_relationships:
+  - name: classes_subjects
+    using:
+      manual_configuration:
+        column_mapping:
+          id: classId
+        insertion_order: null
+        remote_table:
+          name: subject
+          schema: public

@@ -1,0 +1,34 @@
+table:
+  name: users
+  schema: public
+select_permissions:
+  - role: STUDENT
+    permission:
+      columns:
+        - address
+        - avatar
+        - created_at
+        - email
+        - id
+        - institutionInfo
+        - name
+        - phoneNo
+        - planId
+        - updated_at
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+    comment: ""
+update_permissions:
+  - role: STUDENT
+    permission:
+      columns:
+        - address
+        - avatar
+        - institutionInfo
+        - name
+      filter: {}
+      check:
+        id:
+          _eq: X-Hasura-User-Id
+    comment: ""

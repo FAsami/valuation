@@ -1,0 +1,17 @@
+table:
+  name: examPresets
+  schema: public
+select_permissions:
+  - role: STUDENT
+    permission:
+      columns:
+        - id
+        - negativeMarkWeight
+        - questionWeight
+        - time
+        - totalMarks
+        - title
+        - created_at
+        - updated_at
+      filter: {}
+    comment: ""

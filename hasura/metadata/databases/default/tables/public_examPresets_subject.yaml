@@ -1,0 +1,13 @@
+table:
+  name: examPresets_subject
+  schema: public
+object_relationships:
+  - name: subject
+    using:
+      manual_configuration:
+        column_mapping:
+          subjectId: id
+        insertion_order: null
+        remote_table:
+          name: subject
+          schema: public

@@ -1,0 +1,13 @@
+table:
+  name: chapter
+  schema: public
+array_relationships:
+  - name: chapter_questions
+    using:
+      manual_configuration:
+        column_mapping:
+          id: chapterId
+        insertion_order: null
+        remote_table:
+          name: question
+          schema: public
