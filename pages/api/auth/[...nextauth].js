@@ -31,6 +31,7 @@ export const authOptions = {
       },
     }),
   ],
+
   cookies: {
     sessionToken: {
       name: `next-auth.session-token`,
@@ -62,6 +63,7 @@ export const authOptions = {
           })
         }
       } catch (error) {
+        console.log('===>', error)
         console.log('Error:', error)
         return false
       }

@@ -1,6 +1,6 @@
 import { EXAM_PRESETS } from '@/gql/queries'
 import { isClient } from '@/utils'
-import { b } from '@/utils/useBanglaNumber'
+import { eTob } from '@/utils/useBengaliNumber'
 import { useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -180,7 +180,7 @@ const MockTest = () => {
       <div tw="bg-[#161515] max-w-[800px] rounded-lg min-h-[400px] mx-auto my-4">
         <div tw="text-center text-2xl font-light pt-4">প্রশ্ন বণ্টন</div>
         <div tw="text-center text-sm font-light pb-4">
-          সময়ঃ {b(selectedPreset?.time)} মিনিট
+          সময়ঃ {eTob(selectedPreset?.time)} মিনিট
         </div>
         <div>
           {selectedPreset?.subjects
@@ -192,7 +192,7 @@ const MockTest = () => {
                   tw="text-lg flex items-center justify-between px-4 py-2 bg-[#0F0F0F] max-w-[300px] mx-auto rounded-md mb-2"
                 >
                   <div>{sub.title}</div>
-                  <div>{b(sub.numberOfQuestions)}</div>
+                  <div>{eTob(sub.numberOfQuestions)}</div>
                 </div>
               )
             })}
@@ -206,7 +206,7 @@ const MockTest = () => {
             ]}
             tw="font-medium my-2 text-lg"
           >
-            ঐচ্ছিক - যে কোন {b(selectedPreset?.maxOptionalSubject)} টি
+            ঐচ্ছিক - যে কোন {eTob(selectedPreset?.maxOptionalSubject)} টি
           </div>
           <div tw="flex gap-2">
             {selectedPreset?.subjects
@@ -223,7 +223,7 @@ const MockTest = () => {
                     ]}
                     onClick={() => handleSelectOptionalSubject(sub)}
                   >
-                    {sub.title}({b(sub.numberOfQuestions)})
+                    {sub.title}({eTob(sub.numberOfQuestions)})
                   </button>
                 )
               })}
