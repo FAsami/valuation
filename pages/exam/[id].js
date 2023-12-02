@@ -1,6 +1,4 @@
-import { isClient } from '@/utils'
-import { b } from '@/utils/useBanglaNumber'
-import { useRouter } from 'next/router'
+import { eTob } from '@/utils/useBengaliNumber'
 import React, { useEffect, useState } from 'react'
 import tw from 'twin.macro'
 
@@ -113,14 +111,14 @@ const Exam = () => {
             <div key={subject.id} tw="my-12">
               <div tw="flex items-center justify-center">
                 <div tw="text-xl font-semibold pb-6">
-                  {subject.title}({b(subject.totalMarks)})
+                  {subject.title}({eTob(subject.totalMarks)})
                 </div>
               </div>
               {subject.questions.map((ques, i) => {
                 return (
                   <div key={i} tw="mb-6">
                     <div tw="mb-3 text-lg">
-                      {b(i + 1)}. {ques.content.question}
+                      {eTob(i + 1)}. {ques.content.question}
                     </div>
                     <div tw="grid grid-cols-2 gap-2">
                       {ques.content.options.map((option, i) => {
@@ -190,13 +188,13 @@ const Timer = ({ totalTime = 600 }) => {
       <span>সময়:</span>
       <div>
         <span>
-          {b(
+          {eTob(
             Math.floor(time / 60) < 10
               ? `0${Math.floor(time / 60)}`
               : Math.floor(time / 60)
           )}
         </span>
-        :<span>{b(time % 60 < 10 ? `0${time % 60}` : time % 60)}</span>
+        :<span>{eTob(time % 60 < 10 ? `0${time % 60}` : time % 60)}</span>
       </div>
     </div>
   )
