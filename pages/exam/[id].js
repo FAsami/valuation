@@ -189,6 +189,7 @@ const Timer = ({ totalTime = 600 }) => {
     if (timer && timer > 0) {
       setTime(Number(timer))
     }
+    return () => localStorage.removeItem('timer')
   }, [])
 
   useEffect(() => {

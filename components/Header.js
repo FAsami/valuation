@@ -4,25 +4,48 @@ import { MdLightMode } from 'react-icons/md'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
+import { Modal } from 'antd'
+import { useRouter } from 'next/router'
 
 const Header = () => {
   const { status } = useSession()
+  const router = useRouter()
+
+  const waningModal = (cb) => {
+    if (localStorage.getItem('timer')) {
+      Modal.confirm({
+        title: 'Warning',
+        content: 'Are you sure ? ',
+        async onOk() {
+          localStorage.removeItem('timer')
+          cb()
+        },
+        okText: 'Confirm',
+        cancelText: 'Cancel',
+        maskClosable: true,
+      })
+    } else {
+      cb()
+    }
+  }
 
   const handleLogin = async () => {
     await signIn('google')
   }
   const handleLogOut = async () => {
-    await signOut()
+    waningModal(async () => await signOut())
   }
   return (
     <header tw="bg-[#0F0F0F] shadow shadow-gray-800 py-2 sticky top-0">
       <div tw="container mx-auto py-4 flex justify-between items-center px-4">
-        <Link
-          href="/"
-          tw="text-2xl tracking-wide font-semibold text-white no-underline"
+        <button
+          onClick={() => {
+            waningModal(() => router.push('/'))
+          }}
+          tw="text-2xl tracking-wide font-semibold text-white no-underline  bg-transparent border-none outline-none"
         >
           <span tw="text-[#EB3656] font-extrabold text-3xl">মূ </span>ল্যা য় ন
-        </Link>
+        </button>
         <div tw="flex items-center uppercase">
           {status === 'authenticated' ? (
             <StyledButton
