@@ -14,3 +14,11 @@ export const EXAM_PRESETS = gql`
     }
   }
 `
+export const PRESETS = gql`
+  subscription exam {
+    examPresets {
+      title
+      time
+    }
+  }
+`

@@ -46,8 +46,8 @@ const Exam = () => {
     },
     {
       id: 3,
-      title: 'পদার্থবিজ্ঞান 1',
-      totalMarks: 198,
+      title: 'পদার্থবিজ্ঞান',
+      totalMarks: 20,
       questions: [
         {
           id: 3,
@@ -176,10 +176,24 @@ const Timer = ({ totalTime = 600 }) => {
     const timerInterval = setInterval(() => {
       if (time > 0) {
         setTime((prevTime) => prevTime - 1)
+        localStorage.setItem('timer', time)
       }
     }, 1000)
     return () => {
       clearInterval(timerInterval)
+    }
+  }, [time])
+
+  useEffect(() => {
+    const timer = localStorage.getItem('timer')
+    if (timer && timer > 0) {
+      setTime(Number(timer))
+    }
+  }, [])
+
+  useEffect(() => {
+    if (time === 0) {
+      localStorage.removeItem('timer')
     }
   }, [time])
 
