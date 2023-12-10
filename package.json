@@ -11,7 +11,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "@apollo/client": "^3.7.17",
-    "antd": "^5.0.0",
+    "antd": "^5.12.1",
     "apollo-link-context": "^1.0.20",
     "axios": "^1.4.0",
     "eslint": "8.46.0",

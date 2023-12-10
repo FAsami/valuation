@@ -10,7 +10,7 @@ import { InMemoryCache } from '@apollo/client/cache'
 import { WebSocketLink } from '@apollo/client/link/ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 import _, { isUndefined } from 'lodash'
-import { getCookies, isClient } from '@/utils'
+import { getCookies, isClient } from '../utils'
 
 const authLink = setContext(async (_, { headers }) => {
   let nextAuthToken = getCookies()['next-auth.session-token']

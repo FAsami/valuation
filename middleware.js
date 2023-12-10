@@ -9,5 +9,5 @@ export default withAuth({
 })
 
 export const config = {
-  matcher: ['/online-exam', '/practice', '/exam/:path*'],
+  matcher: ['/model-exam', '/practice', '/registration/info', '/exam/:path*'],
 }

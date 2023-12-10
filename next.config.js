@@ -4,10 +4,6 @@ const withTwin = require('./config/withTwin')
  */
 module.exports = withTwin({
   reactStrictMode: true,
-  images: {
-    domains: ['i.ibb.co'],
-    loader: 'default',
-  },
   compiler: {
     styledComponents: true,
   },

@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
 export default Layout
 
 const StyledLayout = styled.div`
-  ${tw`bg-[#0F0F0F] text-[#EEEEEE] min-h-screen w-screen h-full`}
+  ${tw`min-h-screen w-screen h-full`}
   body {
     font-family: 'Noto Sans Bengali', sans-serif;
   }

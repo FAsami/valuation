@@ -5,18 +5,26 @@ import tw from 'twin.macro'
 import { useRouter } from 'next/router'
 
 const Login = () => {
-  const { status } = useSession()
+  const { status, data } = useSession()
   const { push, query } = useRouter()
 
   React.useEffect(() => {
     if (status === 'authenticated') {
-      if (query?.callbackUrl) {
-        push(query.callbackUrl)
+      if (!data?.user?.class) {
+        if (query.callbackUrl) {
+          push(`/registration/info?callbackUrl=${query.callbackUrl}`)
+        } else {
+          push(`/registration/info`)
+        }
       } else {
-        push('/')
+        if (query?.callbackUrl) {
+          push(query.callbackUrl)
+        } else {
+          push('/')
+        }
       }
     }
-  }, [status, push, query])
+  }, [status, push, query, data])
 
   return (
     <div tw="flex h-[calc(100vh - 84px)] items-center justify-center">
@@ -32,7 +40,7 @@ export default Login
 
 const ButtonWrapper = tw.button`
   bg-white
-  text-[#202020]
+  text-[#303030]
   font-normal
   py-4 px-8
   rounded-full
@@ -42,5 +50,4 @@ const ButtonWrapper = tw.button`
   border-none 
   outline-none
   cursor-pointer
-
 `

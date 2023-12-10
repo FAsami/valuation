@@ -22,3 +22,11 @@ export const PRESETS = gql`
     }
   }
 `
+export const GET_CLASSES = gql`
+  query classes @cached {
+    classes {
+      id
+      title
+    }
+  }
+`

@@ -71,6 +71,7 @@ export const authOptions = {
     },
     async session({ session, token }) {
       session.user.userId = token.userId
+      session.user.class = token.class
       return session
     },
     async jwt({ token, profile }) {
@@ -80,6 +81,7 @@ export const authOptions = {
           email: profile.email,
         })
         token.userId = users[0].id
+        token.class = users[0].class
       }
       return token
     },
@@ -94,6 +96,7 @@ const GET_USERS = `
       email
       id
       phoneNo
+      class
     }
   }
 `

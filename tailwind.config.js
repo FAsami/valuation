@@ -6,9 +6,9 @@ module.exports = {
     body: ['Noto Sans Bengali', 'sans - serif'],
     extend: {
       colors: {
-        'v-text': '#151043',
-        'v-text-muted': '#434343',
-        'v-bg': '#27282b',
+        primary: '#18c081',
+        'primary-mid': '#97e3c6',
+        'primary-light': '#d6f6ec',
       },
     },
   },

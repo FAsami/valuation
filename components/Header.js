@@ -2,7 +2,6 @@ import tw from 'twin.macro'
 import { AiOutlineGoogle, AiOutlineLogout } from 'react-icons/ai'
 import { MdLightMode } from 'react-icons/md'
 import styled from 'styled-components'
-import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { Modal } from 'antd'
 import { useRouter } from 'next/router'
@@ -36,30 +35,24 @@ const Header = () => {
     waningModal(async () => await signOut())
   }
   return (
-    <header tw="bg-[#0F0F0F] shadow shadow-gray-800 py-2 sticky top-0">
+    <header tw="shadow sticky top-0">
       <div tw="container mx-auto py-4 flex justify-between items-center px-4">
         <button
           onClick={() => {
             waningModal(() => router.push('/'))
           }}
-          tw="text-2xl tracking-wide font-semibold text-white no-underline  bg-transparent border-none outline-none"
+          tw="text-2xl cursor-pointer tracking-wide font-semibold  no-underline  bg-transparent border-none outline-none"
         >
-          <span tw="text-[#EB3656] font-extrabold text-3xl">মূ </span>ল্যা য় ন
+          <span tw="text-primary font-extrabold text-3xl">মূ</span>ল্যায়ন
         </button>
         <div tw="flex items-center uppercase">
           {status === 'authenticated' ? (
-            <StyledButton
-              onClick={handleLogOut}
-              tw="text-white no-underline text-sm"
-            >
+            <StyledButton onClick={handleLogOut} tw=" no-underline text-sm">
               <AiOutlineLogout color="#EB3656" />
               <div>লগ আউট</div>
             </StyledButton>
           ) : (
-            <StyledButton
-              onClick={handleLogin}
-              tw="text-white no-underline text-sm"
-            >
+            <StyledButton onClick={handleLogin} tw=" no-underline text-sm">
               <AiOutlineGoogle color="#EB3656" />
               <div>লগ ইন</div>
             </StyledButton>

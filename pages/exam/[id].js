@@ -1,4 +1,4 @@
-import { eTob } from '@/utils/useBengaliNumber'
+import { eTob } from '../../utils/useBengaliNumber'
 import React, { useEffect, useState } from 'react'
 import tw from 'twin.macro'
 

@@ -1,7 +1,8 @@
 import { SessionProvider } from 'next-auth/react'
-import { ApolloProvider } from '@/providers'
+import { ApolloProvider } from '../providers'
 import 'antd/dist/reset.css'
-import Layout from '@/components/Layout'
+import Layout from '../components/Layout'
+import { ConfigProvider } from 'antd'
 
 export default function App({
   Component,
@@ -10,9 +11,18 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <ApolloProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#18c081',
+              colorInfo: '#18c081',
+            },
+          }}
+        >
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ConfigProvider>
       </ApolloProvider>
     </SessionProvider>
   )
