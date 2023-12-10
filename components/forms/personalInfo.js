@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 const PersonalInformationForm = () => {
   const { query, push } = useRouter()
   const { data } = useSession()
+
   const [updateStudentInfo, { updatingStudentInfo, studentInfoError }] =
     useMutation(UPDATE_STUDENT_INFO)
 
@@ -51,7 +52,7 @@ const PersonalInformationForm = () => {
   if (loading) {
     return <Loader />
   }
-  console.log(error)
+
   if (error) {
     return (
       <Result
@@ -75,6 +76,7 @@ const PersonalInformationForm = () => {
           label="নাম"
           name="name"
           rules={[{ required: true, message: 'Please enter your name!' }]}
+          initialValue={data?.user?.name}
         >
           <Input
             prefix={<UserOutlined />}
