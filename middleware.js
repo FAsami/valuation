@@ -1,13 +1,23 @@
 import { withAuth } from 'next-auth/middleware'
 
-export default withAuth({
-  callbacks: {
-    authorized({ token }) {
-      return !!token
+const middleware = (handler) => {
+  return withAuth({
+    callbacks: {
+      authorized({ token }) {
+        return !!token
+      },
     },
-  },
-})
+  })(handler)
+}
+
+export default middleware
 
 export const config = {
-  matcher: ['/model-exam', '/practice', '/registration/info', '/exam/:path*'],
+  matcher: [
+    '/admin/:path*',
+    '/model-exam',
+    '/practice',
+    '/registration/info',
+    '/exam/:path*',
+  ],
 }

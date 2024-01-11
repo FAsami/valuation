@@ -63,7 +63,6 @@ export const authOptions = {
           })
         }
       } catch (error) {
-        console.log('===>', error)
         console.log('Error:', error)
         return false
       }

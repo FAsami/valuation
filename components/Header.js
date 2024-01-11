@@ -41,9 +41,12 @@ const Header = () => {
           onClick={() => {
             waningModal(() => router.push('/'))
           }}
-          tw="text-2xl cursor-pointer tracking-wide font-semibold  no-underline  bg-transparent border-none outline-none"
+          tw="text-2xl cursor-pointer tracking-wide font-light  no-underline  bg-transparent border-none outline-none"
+          style={{
+            fontFamily: 'ashalota',
+          }}
         >
-          <span tw="text-primary font-extrabold text-3xl">মূ</span>ল্যায়ন
+          <span tw="text-primary">মূ</span>ল্যা<span tw="text-primary">য়</span>ন
         </button>
         <div tw="flex items-center uppercase">
           {status === 'authenticated' ? (

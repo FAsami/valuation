@@ -18,5 +18,6 @@ const StyledLayout = styled.div`
   ${tw`min-h-screen w-screen h-full`}
   body {
     font-family: 'Noto Sans Bengali', sans-serif;
+    font-optical-sizing: auto;
   }
 `
