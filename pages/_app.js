@@ -1,6 +1,7 @@
 import { SessionProvider } from 'next-auth/react'
 import { ApolloProvider } from '../providers'
 import 'antd/dist/reset.css'
+import 'animate.css'
 import Layout from '../components/Layout'
 import { ConfigProvider } from 'antd'
 

@@ -35,22 +35,23 @@ const Header = () => {
     waningModal(async () => await signOut())
   }
   return (
-    <header tw="shadow sticky top-0">
+    <header tw="shadow sticky top-0 font-sans bg-white">
       <div tw="container mx-auto py-4 flex justify-between items-center px-4">
         <button
           onClick={() => {
             waningModal(() => router.push('/'))
           }}
-          tw="text-2xl cursor-pointer tracking-wide font-light  no-underline  bg-transparent border-none outline-none"
-          style={{
-            fontFamily: 'ashalota',
-          }}
+          tw="text-3xl cursor-pointer tracking-wide font-light  no-underline  bg-transparent border-none outline-none"
         >
-          <span tw="text-primary">মূ</span>ল্যা<span tw="text-primary">য়</span>ন
+          <span tw="text-primary">মূ</span>ল্যা
+          <span tw="text-primary">য়</span>ন
         </button>
-        <div tw="flex items-center uppercase">
+        <div tw="flex items-center uppercase font-sans">
           {status === 'authenticated' ? (
-            <StyledButton onClick={handleLogOut} tw=" no-underline text-sm">
+            <StyledButton
+              onClick={handleLogOut}
+              tw="font-sans no-underline text-sm"
+            >
               <AiOutlineLogout color="#EB3656" />
               <div>লগ আউট</div>
             </StyledButton>
